@@ -1,0 +1,365 @@
+/* auth.css - автономные стили для страницы авторизации */
+:root {
+    /* Цветовая палитра */
+    --primary-color: #3498db;
+    --primary-hover: #2980b9;
+    --danger-color: #e74c3c;
+    --success-color: #2ecc71;
+    --dark-color: #2c3e50;
+    --dark-secondary: #34495e;
+    --text-color: #333;
+    --text-light: #7f8c8d;
+    --light-gray: #f5f5f5;
+    --medium-gray: #e0e0e0;
+    --white: #fff;
+
+    /* Эффекты */
+    --shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    --shadow-hover: 0 5px 15px rgba(0, 0, 0, 0.1);
+    --border-radius: 8px;
+    --transition: all 0.3s ease;
+}
+
+/* Базовые сбросы */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f5f7fa;
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* Стили для шапки */
+.header-container {
+    width: 100%;
+    max-width: 450px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.header-container h1 {
+    font-size: 2.2rem;
+    color: var(--dark-color);
+    margin-bottom: 10px;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.header-container h1::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background-color: var(--primary-color);
+    border-radius: 3px;
+}
+
+/* Основные стили формы */
+#authForm, #registrationForm {
+    width: 100%;
+    max-width: 450px;
+    padding: 40px;
+    background: var(--white);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+}
+
+#authForm:hover, #registrationForm:hove {
+    box-shadow: var(--shadow-hover);
+}
+
+/* Стили для групп формы */
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 600;
+    color: var(--dark-color);
+    font-size: 0.95rem;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid var(--medium-gray);
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    transition: var(--transition);
+}
+
+.form-group input:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+}
+
+/* Специфичные стили для чекбокса */
+.form-group input[type="checkbox"] {
+    width: auto;
+    margin-right: 10px;
+    transform: scale(1.2);
+}
+
+.checkbox-group {
+    display: flex;
+    align-items: center;
+}
+
+.checkbox-label {
+    cursor: pointer;
+    user-select: none;
+    font-weight: normal;
+}
+
+/* Стили кнопки */
+.btn {
+    display: inline-block;
+    padding: 14px;
+    width: 100%;
+    border: none;
+    border-radius: var(--border-radius);
+    background-color: var(--primary-color);
+    color: var(--white);
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    text-align: center;
+    text-decoration: none;
+}
+
+.btn:hover {
+    background-color: var(--primary-hover);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-hover);
+}
+
+/* Группа кнопок */
+.button-group {
+    margin-top: 30px;
+}
+
+/* Сообщения об ошибках */
+.error-message {
+    color: var(--danger-color);
+    font-size: 0.85rem;
+    margin-top: 8px;
+    min-height: 20px;
+}
+
+/* Дополнительные ссылки */
+.auth-links {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.auth-link {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: var(--transition);
+}
+
+.auth-link:hover {
+    color: var(--primary-hover);
+    text-decoration: underline;
+}
+
+/* Анимации */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+#authForm {
+    animation: fadeInUp 0.5s ease-out forwards;
+}
+
+/* Стили для группы с чекбоксом */
+.checkbox-group {
+    display: flex;
+    align-items: center; /* Выравнивание по центру вертикально */
+    gap: 8px;
+    min-height: 25px; /* Фиксированная высота для стабильного выравнивания */
+}
+
+.checkbox-group input[type="checkbox"] {
+    width: 18px; /* Фиксированная ширина */
+    height: 18px; /* Фиксированная высота */
+    margin: 0;
+    cursor: pointer;
+    flex-shrink: 0; /* Запрещаем уменьшение размера */
+}
+
+.checkbox-group label {
+    margin: 0;
+    padding: 0;
+    font-weight: normal;
+    font-size: 0.95rem;
+    line-height: 1.4; /* Оптимальный межстрочный интервал */
+    color: var(--dark-color);
+    cursor: pointer;
+    display: flex;
+    align-items: center; /* Дополнительное выравнивание */
+    min-height: 18px; /* Совпадает с высотой чекбокса */
+}
+
+/* Для точного выравнивания в разных браузерах */
+.checkbox-group input[type="checkbox"] {
+    position: relative;
+    top: 1px; /* Микро-корректировка для идеального выравнивания */
+}
+
+/* Стили для кнопки "Назад" */
+.btn-back {
+    display: inline-block;
+    padding: 14px;
+    width: 100%;
+    border: none;
+    border-radius: var(--border-radius);
+    background-color: var(--medium-gray);
+    color: var(--dark-color);
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    text-align: center;
+    text-decoration: none;
+    margin-top: 15px;
+}
+
+.btn-back:hover {
+    background-color: #d0d0d0;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-hover);
+}
+
+/* Стили для группы кнопок */
+.button-group {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Стили для дополнительных ссылок */
+.auth-links {
+    margin-top: 25px;
+    text-align: center;
+    font-size: 0.95rem;
+    color: var(--text-light);
+}
+
+.auth-link {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+    transition: var(--transition);
+    margin-left: 5px;
+}
+
+.auth-link:hover {
+    color: var(--primary-hover);
+    text-decoration: underline;
+}
+
+/* Адаптация заголовка для регистрации */
+.header-container h1[for-registration] {
+    color: var(--dark-secondary);
+}
+
+/* Стили для поля подтверждения пароля */
+.form-group.password-confirm {
+    margin-top: -15px; /* Уменьшаем отступ между полями пароля */
+}
+
+/* Анимация для формы регистрации */
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+#registrationForm {
+    animation: slideInRight 0.5s ease-out forwards;
+}
+
+/* Дополнительные стили для ссылок в регистрации */
+.auth-links.register-links {
+    margin-top: 25px;
+}
+
+/* Стили для кнопок в регистрации */
+.button-group.register-buttons {
+    margin-top: 25px;
+}
+
+/* Адаптивность */
+@media (max-width: 576px) {
+    .header-container h1 {
+        font-size: 1.8rem;
+    }
+
+    #authForm {
+        padding: 30px 20px;
+    }
+
+    .form-group input {
+        padding: 10px 12px;
+    }
+
+    .btn {
+        padding: 12px;
+        font-size: 1rem;
+    }
+
+    .button-group {
+        margin-top: 20px;
+    }
+
+    .auth-links {
+        margin-top: 20px;
+        font-size: 0.9rem;
+    }
+
+    /* Адаптивные стили для регистрации */
+    #registrationForm {
+        padding: 30px 20px;
+    }
+
+    .form-group.password-confirm {
+        margin-top: -10px;
+    }
+}

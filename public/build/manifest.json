@@ -1,0 +1,25 @@
+{
+  "resources/css/cars.css": {
+    "file": "assets/cars-BQAbZ6Ay.css",
+    "src": "resources/css/cars.css",
+    "isEntry": true
+  },
+  "resources/js/create.js": {
+    "file": "assets/create-DuebBvzh.js",
+    "name": "create",
+    "src": "resources/js/create.js",
+    "isEntry": true
+  },
+  "resources/js/edit.js": {
+    "file": "assets/edit-CTqTaWdu.js",
+    "name": "edit",
+    "src": "resources/js/edit.js",
+    "isEntry": true
+  },
+  "resources/js/show.js": {
+    "file": "assets/show-o_i7XCZW.js",
+    "name": "show",
+    "src": "resources/js/show.js",
+    "isEntry": true
+  }
+}
