@@ -1,57 +1,61 @@
-# Cars-Site (Laravel 12 Auto Marketplace)
+<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
-Краткое описание: Cars-Site – это профессиональный веб-портал для продажи автомобилей, разработанный на Laravel 12. Система предоставляет полный цикл управления контентом с гибкой системой ролей, разграничением прав доступа и комплексной безопасностью. Пользователи могут просматривать автомобили, оставлять комментарии, а администраторы – управлять контентом, моделями, странами и тегами.
+<p align="center">
+<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+</p>
 
-Добавленные файлы (помимо стандартного Laravel 12):
+## About Laravel
 
-1. База данных (laravel.sql), кодировка: utf8mb4_unicode_ci.
-Система ролей (один пользователь - несколько ролей):
-- Неавторизованный пользователь: Просмотр машин со статусом "Активно", марок, стран и тегов. Статусы карточек скрыты.
-- Покупатель: Просмотр машин ("Активно"), марок, стран и тегов. Добавление комментариев к машинам и брендам. Статусы карточек скрыты.
-- Менеджер: Просмотр всех машин (видит статусы). Добавление комментариев. Создание и редактирование своих карточек. Изменение статусов, перемещение в корзину и восстановление. Просмотр марок, стран и тегов.
-- Модератор: Полный доступ: просмотр, добавление, редактирование и удаление любых машин, марок, стран и тегов. Управление комментариями, корзиной и статусами.
+Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
-2. Основные компоненты 
-2.1 Структура проекта: public/ – корневая папка; public/index.php – точка входа, public/favicon/ – иконки сайта.
+- [Simple, fast routing engine](https://laravel.com/docs/routing).
+- [Powerful dependency injection container](https://laravel.com/docs/container).
+- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
+- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
+- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
+- [Robust background job processing](https://laravel.com/docs/queues).
+- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
-2.2 app/Enums/Cars/Status.php – статусы машин: 0 – Черновик | 5 – Активно | 10 – Продано | 15 – Отменено.
+Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-2.3 Контроллеры (app/Http/Controllers/):
-- Auth/ – регистрация (Registration.php) и авторизация (Sessions.php).
-- Основные: Brands.php, Cars.php, Comments.php, Countries.php, Tags.php.
-- Абстрактный Controllers.php с проверкой заголовков.
+## Learning Laravel
 
-2.4 Модели (app/Models/): Brand.php, Car.php, Comment.php, Country.php, Tag.php, User.php, Role.php.
+Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
 
-2.5 Политики (app/Policies/): CarPolicy.php, CommentPolicy.php, GeneralPolicy.php (для брендов, стран, тегов).
+You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
 
-2.6 Middleware (app/Http/Middleware/BlockByIp.php) – блокировка по IP.
+If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
-2.7 Конфигурации (config/):
-- app-cars.php – типы трансмиссии.
-- commentable.php – комментируемые таблицы.
-- list-blocked-ip.php – заблокированные IP.
-- icons.php – настройки FontAwesome.
+## Laravel Sponsors
 
-2.8 Дополнительные файлы:
-- database/migrations/ – миграции БД.
-- database/seeders/ – наполнители данных.
-- lang/ru/ – локализация (русский язык).
-- resources/views/ – Blade-шаблоны (компонентный подход).
-- routes/web.php – маршруты сайта.
+We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
 
-3. Развертывание на сервере:
-3.1 создать корневую папку для домена \public. Файл \public\index.php - точка входа
-3.2 скопировать все файлы на сервер кроме папок \vender и \node_modules. Установить папку \vender с помощью команды composer install, а папку \node_modules с помощью команды npm install, затем собрать проект с помощью команды npm run build (предварительно удалить файл \public\hot, если была выполнена команда npm run dev)
-3.3 поменять настройки в файле .env, указать сервер в файле vite.config.js
-3.4 выполнить команды php artisan config:cache и php artisan route:cache (при изменениях на сервере, необходимо повторно выполнять эти команды)
+### Premium Partners
 
-4. Особенности реализации:
-4.1 Гибкая система ролей (множественные роли у пользователя).
-4.2 Статусы карточек (Черновик, Активно, Продано, Отменено).
-4.3 Комментарии к машинам и брендам (с проверкой прав).
-4.4 Блокировка по IP через middleware.
-4.5 Локализация (русский язык).
-4.6 Компонентный Blade (переиспользуемые шаблоны).
-4.7 FontAwesome иконки через провайдер.
-4.8 Валидация форм (разделение по категориям).
+- **[Vehikl](https://vehikl.com)**
+- **[Tighten Co.](https://tighten.co)**
+- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
+- **[64 Robots](https://64robots.com)**
+- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
+- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
+- **[Redberry](https://redberry.international/laravel-development)**
+- **[Active Logic](https://activelogic.com)**
+
+## Contributing
+
+Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+
+## Code of Conduct
+
+In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+
+## Security Vulnerabilities
+
+If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+
+## License
+
+The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
